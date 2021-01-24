@@ -2,7 +2,7 @@
 
 Reload `dylib` crates at runtime
 
-[`libloading`] has some [issue] for reloading dynamic lobraries on macOS. [`HotLibrary`]
+[`libloading`] has some [issue] for reloading dynamic libraries on macOS. [`HotLibrary`]
 automatically handles it under the hood.
 
 [issue]: https://github.com/nagisa/rust_libloading/issues/59
