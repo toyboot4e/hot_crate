@@ -2,13 +2,12 @@
 
 Reload `dylib` crates at runtime
 
-There ara some crates for `dylib` loading and they are based on [`libloading`], but it doesn't work
-well for hot reloading Rust code on macOS out of the box, so `hot_crate` does the job.
+[`libloading`] has some [issue] for reloading dynamic lobraries on macOS. [`HotLibrary`]
+automatically handles it under the hood.
 
-The requirement on macOS is to change the location of the dylib every time we build new `dylib`.
-[`HotCrate::reload`] does it under the hood.
+[issue]: https://github.com/nagisa/rust_libloading/issues/59
 
-`hot_crate` is basically a clone of [`hotlib`].
+Credit: `hot_crate` is basically a fork of [`hotlib`].
 
 [`hotlib`]: https://github.com/mitchmindtree/hotlib
 
@@ -31,23 +30,24 @@ use std::{
 pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 pub type Error = Box<dyn std::error::Error>;
 
-/// macOS: `dylib`, Linux: `so`, Windows: `dll`, else: `<unknown-platform>`
-pub const DYLIB_EXTENSION: &'static str = if cfg!(target_os = "linux") {
-    "so"
-} else if cfg!(any(target_os = "macos", target_os = "ios")) {
-    "dylib"
-} else if cfg!(target_os = "windows") {
-    "dll"
-} else {
-    "<unknown-platform>"
-};
+/// macOS: `dylib`, Linux: `so`, Windows: `dll`
+#[cfg(target_os = "macos")]
+pub const DYLIB_EXTENSION: &'static str = "dylib";
 
-/// A reloadable `dylib` crate
+/// macOS: `dylib`, Linux: `so`, Windows: `dll`
+#[cfg(target_os = "linux")]
+pub const DYLIB_EXTENSION: &'static str = "so";
+
+/// macOS: `dylib`, Linux: `so`, Windows: `dll`
+#[cfg(target_os = "window")]
+pub const DYLIB_EXTENSION: &'static str = "dll";
+
+/// A reloadable dynamic [`Library`]
 #[derive(Debug)]
-pub struct HotCrate {
-    pub main_metadata: Metadata,
-    pub dylib_toml: PathBuf,
-    /// API to load symbols from the `dylib` crate
+pub struct HotLibrary {
+    main_metadata: Metadata,
+    dylib_toml: PathBuf,
+    /// API to load symbols from the target `dylib` crate
     pub lib: Library,
     lib_path: PathBuf,
     /// See [`fs::Metadata::modified`][f]
@@ -58,7 +58,7 @@ pub struct HotCrate {
     reload_counter: usize,
 }
 
-impl HotCrate {
+impl HotLibrary {
     /// Loads crate
     ///
     /// TODO: consider hot loading
@@ -69,13 +69,14 @@ impl HotCrate {
         let main_metadata = MetadataCommand::new().manifest_path(main_toml).exec()?;
         let lib_path = self::find_dylib_path(&main_metadata, dylib_toml)?;
         let lib = Library::new(&lib_path)?;
+        let lib_timestamp = fs::metadata(&lib_path)?.modified().ok();
 
         Ok(Self {
             main_metadata,
             dylib_toml: dylib_toml.to_path_buf(),
             lib,
             lib_path,
-            lib_timestamp: None,
+            lib_timestamp,
             reload_counter: 0,
         })
     }
@@ -97,8 +98,23 @@ impl HotCrate {
         Ok(tmp)
     }
 
-    /// Forces reloading dylib
-    pub fn reload(&mut self) -> Result<()> {
+    /// Reloads dylib if it's re-compiled and updated. Returns true if succeed in reloading.
+    pub fn reload(&mut self) -> Result<bool> {
+        let timestamp = fs::metadata(&self.lib_path)?.modified().ok();
+        if timestamp == self.lib_timestamp {
+            Ok(false)
+        } else {
+            self.force_reload()?;
+            Ok(true)
+        }
+    }
+
+    fn force_reload(&mut self) -> Result<()> {
+        {
+            let dylib_pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
+            log::info!("reloading library `{}`..", dylib_pkg.name);
+        }
+
         let dylib_path = self::find_dylib_path(&self.main_metadata, &self.dylib_toml)?;
         let tmp_dylib_path = self.tmp_dylib_path()?;
         let tmp_dir = tmp_dylib_path.parent().unwrap();
@@ -123,28 +139,19 @@ impl HotCrate {
 
         self.lib = Library::new(&tmp_dylib_path)?;
         self.lib_path = dylib_path;
-        // TODO: update timestamp
+        self.lib_timestamp = fs::metadata(&self.lib_path)?.modified().ok();
 
         Ok(())
     }
-
-    pub fn reload_if_recompiled(&mut self) -> Result<()> {
-        // TODO: use timestamp
-        self.reload()
-    }
-
-    // pub fn recompile_and_reload(&mut self) -> Result<()> {
-    //     Ok(())
-    // }
 }
 
 fn find_dylib_pkg<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Result<&'a Package> {
+    let dylib_toml = dylib_toml.canonicalize()?;
+
     let dylib_pkg = main_metadata
         .packages
         .iter()
         .find_map(|pkg| {
-            // TODO: identify dylib from something else
-            // TODO: allow relative path
             if pkg.manifest_path == dylib_toml {
                 Some(pkg)
             } else {
@@ -176,7 +183,14 @@ fn find_dylib_target<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Resu
 fn find_dylib_path(main_metadata: &Metadata, dylib_toml: &Path) -> Result<PathBuf> {
     let target = self::find_dylib_target(main_metadata, dylib_toml)?;
 
-    Ok(main_metadata
-        .target_directory
-        .join(format!("debug/lib{}.{}", target.name, DYLIB_EXTENSION)))
+    let debug_or_release = if cfg!(debug_assertions) {
+        "debug"
+    } else {
+        "release"
+    };
+
+    Ok(main_metadata.target_directory.join(format!(
+        "{}/lib{}.{}",
+        debug_or_release, target.name, DYLIB_EXTENSION
+    )))
 }
