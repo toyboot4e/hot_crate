@@ -1,0 +1,2045 @@
+{
+    "metadata": null,
+    "packages": [
+        {
+            "authors": [
+                "Alex Crichton <alex@alexcrichton.com>"
+            ],
+            "categories": [],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "compiler_builtins",
+                    "optional": true,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.1.2",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "rustc-std-workspace-core",
+                    "optional": true,
+                    "registry": null,
+                    "rename": "core",
+                    "req": "^1.0.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": "A macro to ergonomically define an item depending on a large number of #[cfg]\nparameters. Structured like an if-else chain, the first matching branch is the\nitem that gets emitted.\n",
+            "documentation": "https://docs.rs/cfg-if",
+            "edition": "2018",
+            "features": {
+                "rustc-dep-of-std": [
+                    "core",
+                    "compiler_builtins"
+                ]
+            },
+            "homepage": "https://github.com/alexcrichton/cfg-if",
+            "id": "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [],
+            "license": "MIT/Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/Cargo.toml",
+            "metadata": null,
+            "name": "cfg-if",
+            "publish": null,
+            "readme": "README.md",
+            "repository": "https://github.com/alexcrichton/cfg-if",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2018",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "cfg-if",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "xcrate",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/tests/xcrate.rs",
+                    "test": true
+                }
+            ],
+            "version": "1.0.0"
+        },
+        {
+            "authors": [
+                "toyboot4e <toyboot4e@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "hot_crate",
+                    "optional": false,
+                    "path": "/Users/toy/repos/rs/reload/hot_crate",
+                    "registry": null,
+                    "rename": null,
+                    "req": "*",
+                    "source": null,
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "plugin_api",
+                    "optional": false,
+                    "path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugin_api",
+                    "registry": null,
+                    "rename": null,
+                    "req": "*",
+                    "source": null,
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "plugins",
+                    "optional": false,
+                    "path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugins",
+                    "registry": null,
+                    "rename": null,
+                    "req": "*",
+                    "source": null,
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": null,
+            "documentation": null,
+            "edition": "2018",
+            "features": {},
+            "homepage": null,
+            "id": "demo 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo)",
+            "keywords": [],
+            "license": null,
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/repos/rs/reload/hot_crate/demo/Cargo.toml",
+            "metadata": null,
+            "name": "demo",
+            "publish": null,
+            "readme": null,
+            "repository": null,
+            "source": null,
+            "targets": [
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": true,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "bin"
+                    ],
+                    "name": "demo",
+                    "src_path": "/Users/toy/repos/rs/reload/hot_crate/demo/src/main.rs",
+                    "test": true
+                }
+            ],
+            "version": "0.1.0"
+        },
+        {
+            "authors": [
+                "toyboot4e <toyboot4e@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "libloading",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.6.7",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "serde_json",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0.61",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": null,
+            "documentation": null,
+            "edition": "2018",
+            "features": {},
+            "homepage": null,
+            "id": "hot_crate 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate)",
+            "keywords": [],
+            "license": null,
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/repos/rs/reload/hot_crate/Cargo.toml",
+            "metadata": null,
+            "name": "hot_crate",
+            "publish": null,
+            "readme": null,
+            "repository": null,
+            "source": null,
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2018",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "hot_crate",
+                    "src_path": "/Users/toy/repos/rs/reload/hot_crate/src/lib.rs",
+                    "test": true
+                }
+            ],
+            "version": "0.1.0"
+        },
+        {
+            "authors": [
+                "David Tolnay <dtolnay@gmail.com>"
+            ],
+            "categories": [
+                "value-formatting"
+            ],
+            "dependencies": [],
+            "description": "Fast functions for printing integer primitives to an io::Write",
+            "documentation": "https://docs.rs/itoa",
+            "edition": "2015",
+            "features": {
+                "default": [
+                    "std"
+                ],
+                "i128": [],
+                "std": []
+            },
+            "homepage": null,
+            "id": "itoa 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [],
+            "license": "MIT OR Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/itoa-0.4.7/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "targets": [
+                            "x86_64-unknown-linux-gnu"
+                        ]
+                    }
+                }
+            },
+            "name": "itoa",
+            "publish": null,
+            "readme": "README.md",
+            "repository": "https://github.com/dtolnay/itoa",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "itoa",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/itoa-0.4.7/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/itoa-0.4.7/tests/test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "bench"
+                    ],
+                    "name": "bench",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/itoa-0.4.7/benches/bench.rs",
+                    "test": false
+                }
+            ],
+            "version": "0.4.7"
+        },
+        {
+            "authors": [
+                "Simonas Kazlauskas <libloading@kazlauskas.me>"
+            ],
+            "categories": [
+                "api-bindings"
+            ],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "libc",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.2",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "static_assertions",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.1",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "cfg-if",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": "cfg(unix)",
+                    "uses_default_features": true
+                },
+                {
+                    "features": [
+                        "winerror",
+                        "errhandlingapi",
+                        "libloaderapi"
+                    ],
+                    "kind": null,
+                    "name": "winapi",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.3",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": "cfg(windows)",
+                    "uses_default_features": true
+                }
+            ],
+            "description": "A safer binding to platform\u2019s dynamic library loading utilities",
+            "documentation": "https://docs.rs/libloading/",
+            "edition": "2015",
+            "features": {},
+            "homepage": null,
+            "id": "libloading 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "dlopen",
+                "load",
+                "shared",
+                "dylib"
+            ],
+            "license": "ISC",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "all-features": true,
+                        "rustdoc-args": [
+                            "--cfg",
+                            "docsrs"
+                        ]
+                    }
+                }
+            },
+            "name": "libloading",
+            "publish": null,
+            "readme": "README.mkd",
+            "repository": "https://github.com/nagisa/rust_libloading/",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "libloading",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "constants",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/tests/constants.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "functions",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/tests/functions.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "library_filename",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/tests/library_filename.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "windows",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/tests/windows.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "markers",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/libloading-0.6.7/tests/markers.rs",
+                    "test": true
+                }
+            ],
+            "version": "0.6.7"
+        },
+        {
+            "authors": [
+                "toyboot4e <toyboot4e@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [],
+            "description": null,
+            "documentation": null,
+            "edition": "2018",
+            "features": {},
+            "homepage": null,
+            "id": "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)",
+            "keywords": [],
+            "license": null,
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugin_api/Cargo.toml",
+            "metadata": null,
+            "name": "plugin_api",
+            "publish": null,
+            "readme": null,
+            "repository": null,
+            "source": null,
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2018",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "plugin_api",
+                    "src_path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugin_api/src/lib.rs",
+                    "test": true
+                }
+            ],
+            "version": "0.1.0"
+        },
+        {
+            "authors": [
+                "toyboot4e <toyboot4e@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "plugin_api",
+                    "optional": false,
+                    "path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugin_api",
+                    "registry": null,
+                    "rename": null,
+                    "req": "*",
+                    "source": null,
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": null,
+            "documentation": null,
+            "edition": "2018",
+            "features": {},
+            "homepage": null,
+            "id": "plugins 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugins)",
+            "keywords": [],
+            "license": null,
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugins/Cargo.toml",
+            "metadata": null,
+            "name": "plugins",
+            "publish": null,
+            "readme": null,
+            "repository": null,
+            "source": null,
+            "targets": [
+                {
+                    "crate_types": [
+                        "dylib"
+                    ],
+                    "doc": true,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "dylib"
+                    ],
+                    "name": "plugins",
+                    "src_path": "/Users/toy/repos/rs/reload/hot_crate/demo/plugins/src/lib.rs",
+                    "test": true
+                }
+            ],
+            "version": "0.1.0"
+        },
+        {
+            "authors": [
+                "David Tolnay <dtolnay@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "no-panic",
+                    "optional": true,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.1",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "num_cpus",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.8",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "rand",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.7",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "rand_xorshift",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.2",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": "Fast floating point to string conversion",
+            "documentation": "https://docs.rs/ryu",
+            "edition": "2018",
+            "features": {
+                "small": []
+            },
+            "homepage": null,
+            "id": "ryu 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [],
+            "license": "Apache-2.0 OR BSL-1.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "targets": [
+                            "x86_64-unknown-linux-gnu"
+                        ]
+                    }
+                }
+            },
+            "name": "ryu",
+            "publish": null,
+            "readme": "README.md",
+            "repository": "https://github.com/dtolnay/ryu",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2018",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "ryu",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "example"
+                    ],
+                    "name": "upstream_benchmark",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/examples/upstream_benchmark.rs",
+                    "test": false
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "d2s_table_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/d2s_table_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "common_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/common_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "d2s_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/d2s_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "s2d_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/s2d_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "exhaustive",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/exhaustive.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "f2s_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/f2s_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "test"
+                    ],
+                    "name": "s2f_test",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/tests/s2f_test.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "bench"
+                    ],
+                    "name": "bench",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/benches/bench.rs",
+                    "test": false
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/ryu-1.0.5/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "1.0.5"
+        },
+        {
+            "authors": [
+                "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+                "David Tolnay <dtolnay@gmail.com>"
+            ],
+            "categories": [
+                "encoding"
+            ],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "serde_derive",
+                    "optional": true,
+                    "registry": null,
+                    "rename": null,
+                    "req": "=1.0.120",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "serde_derive",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": "A generic serialization/deserialization framework",
+            "documentation": "https://docs.serde.rs/serde/",
+            "edition": "2015",
+            "features": {
+                "alloc": [],
+                "default": [
+                    "std"
+                ],
+                "derive": [
+                    "serde_derive"
+                ],
+                "rc": [],
+                "std": [],
+                "unstable": []
+            },
+            "homepage": "https://serde.rs",
+            "id": "serde 1.0.120 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "serde",
+                "serialization",
+                "no_std"
+            ],
+            "license": "MIT OR Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde-1.0.120/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "targets": [
+                            "x86_64-unknown-linux-gnu"
+                        ]
+                    }
+                },
+                "playground": {
+                    "features": [
+                        "derive",
+                        "rc"
+                    ]
+                }
+            },
+            "name": "serde",
+            "publish": null,
+            "readme": "crates-io.md",
+            "repository": "https://github.com/serde-rs/serde",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "serde",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde-1.0.120/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde-1.0.120/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "1.0.120"
+        },
+        {
+            "authors": [
+                "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+                "David Tolnay <dtolnay@gmail.com>"
+            ],
+            "categories": [
+                "encoding"
+            ],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "indexmap",
+                    "optional": true,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.5",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "itoa",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.4.3",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": false
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "ryu",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "serde",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0.100",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": false
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "automod",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "rustversion",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "serde_bytes",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.11",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "serde_derive",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": "dev",
+                    "name": "serde_stacker",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.1",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                },
+                {
+                    "features": [
+                        "diff"
+                    ],
+                    "kind": "dev",
+                    "name": "trybuild",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^1.0.19",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": null,
+                    "uses_default_features": true
+                }
+            ],
+            "description": "A JSON serialization file format",
+            "documentation": "https://docs.serde.rs/serde_json/",
+            "edition": "2018",
+            "features": {
+                "alloc": [
+                    "serde/alloc"
+                ],
+                "arbitrary_precision": [],
+                "default": [
+                    "std"
+                ],
+                "float_roundtrip": [],
+                "preserve_order": [
+                    "indexmap"
+                ],
+                "raw_value": [],
+                "std": [
+                    "serde/std"
+                ],
+                "unbounded_depth": []
+            },
+            "homepage": null,
+            "id": "serde_json 1.0.61 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "json",
+                "serde",
+                "serialization"
+            ],
+            "license": "MIT OR Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.61/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "features": [
+                            "raw_value",
+                            "unbounded_depth"
+                        ],
+                        "targets": [
+                            "x86_64-unknown-linux-gnu"
+                        ]
+                    }
+                },
+                "playground": {
+                    "features": [
+                        "raw_value"
+                    ]
+                }
+            },
+            "name": "serde_json",
+            "publish": null,
+            "readme": "README.md",
+            "repository": "https://github.com/serde-rs/json",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2018",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "serde_json",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.61/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2018",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.61/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "1.0.61"
+        },
+        {
+            "authors": [
+                "Peter Atashian <retep998@gmail.com>"
+            ],
+            "categories": [
+                "external-ffi-bindings",
+                "no-std",
+                "os::windows-apis"
+            ],
+            "dependencies": [
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "winapi-i686-pc-windows-gnu",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.4",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": "i686-pc-windows-gnu",
+                    "uses_default_features": true
+                },
+                {
+                    "features": [],
+                    "kind": null,
+                    "name": "winapi-x86_64-pc-windows-gnu",
+                    "optional": false,
+                    "registry": null,
+                    "rename": null,
+                    "req": "^0.4",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "target": "x86_64-pc-windows-gnu",
+                    "uses_default_features": true
+                }
+            ],
+            "description": "Raw FFI bindings for all of Windows API.",
+            "documentation": "https://docs.rs/winapi/",
+            "edition": "2015",
+            "features": {
+                "accctrl": [],
+                "aclapi": [],
+                "activation": [],
+                "adhoc": [],
+                "appmgmt": [],
+                "audioclient": [],
+                "audiosessiontypes": [],
+                "avrt": [],
+                "basetsd": [],
+                "bcrypt": [],
+                "bits": [],
+                "bits10_1": [],
+                "bits1_5": [],
+                "bits2_0": [],
+                "bits2_5": [],
+                "bits3_0": [],
+                "bits4_0": [],
+                "bits5_0": [],
+                "bitscfg": [],
+                "bitsmsg": [],
+                "bluetoothapis": [],
+                "bluetoothleapis": [],
+                "bthdef": [],
+                "bthioctl": [],
+                "bthledef": [],
+                "bthsdpdef": [],
+                "bugcodes": [],
+                "cderr": [],
+                "cfg": [],
+                "cfgmgr32": [],
+                "cguid": [],
+                "combaseapi": [],
+                "coml2api": [],
+                "commapi": [],
+                "commctrl": [],
+                "commdlg": [],
+                "commoncontrols": [],
+                "consoleapi": [],
+                "corecrt": [],
+                "corsym": [],
+                "d2d1": [],
+                "d2d1_1": [],
+                "d2d1_2": [],
+                "d2d1_3": [],
+                "d2d1effectauthor": [],
+                "d2d1effects": [],
+                "d2d1effects_1": [],
+                "d2d1effects_2": [],
+                "d2d1svg": [],
+                "d2dbasetypes": [],
+                "d3d": [],
+                "d3d10": [],
+                "d3d10_1": [],
+                "d3d10_1shader": [],
+                "d3d10effect": [],
+                "d3d10misc": [],
+                "d3d10sdklayers": [],
+                "d3d10shader": [],
+                "d3d11": [],
+                "d3d11_1": [],
+                "d3d11_2": [],
+                "d3d11_3": [],
+                "d3d11_4": [],
+                "d3d11on12": [],
+                "d3d11sdklayers": [],
+                "d3d11shader": [],
+                "d3d11tokenizedprogramformat": [],
+                "d3d12": [],
+                "d3d12sdklayers": [],
+                "d3d12shader": [],
+                "d3d9": [],
+                "d3d9caps": [],
+                "d3d9types": [],
+                "d3dcommon": [],
+                "d3dcompiler": [],
+                "d3dcsx": [],
+                "d3dkmdt": [],
+                "d3dkmthk": [],
+                "d3dukmdt": [],
+                "d3dx10core": [],
+                "d3dx10math": [],
+                "d3dx10mesh": [],
+                "datetimeapi": [],
+                "davclnt": [],
+                "dbghelp": [],
+                "dbt": [],
+                "dcommon": [],
+                "dcomp": [],
+                "dcompanimation": [],
+                "dcomptypes": [],
+                "dde": [],
+                "ddraw": [],
+                "ddrawi": [],
+                "ddrawint": [],
+                "debug": [
+                    "impl-debug"
+                ],
+                "debugapi": [],
+                "devguid": [],
+                "devicetopology": [],
+                "devpkey": [],
+                "devpropdef": [],
+                "dinput": [],
+                "dinputd": [],
+                "dispex": [],
+                "dmksctl": [],
+                "dmusicc": [],
+                "docobj": [],
+                "documenttarget": [],
+                "dot1x": [],
+                "dpa_dsa": [],
+                "dpapi": [],
+                "dsgetdc": [],
+                "dsound": [],
+                "dsrole": [],
+                "dvp": [],
+                "dwmapi": [],
+                "dwrite": [],
+                "dwrite_1": [],
+                "dwrite_2": [],
+                "dwrite_3": [],
+                "dxdiag": [],
+                "dxfile": [],
+                "dxgi": [],
+                "dxgi1_2": [],
+                "dxgi1_3": [],
+                "dxgi1_4": [],
+                "dxgi1_5": [],
+                "dxgi1_6": [],
+                "dxgidebug": [],
+                "dxgiformat": [],
+                "dxgitype": [],
+                "dxva2api": [],
+                "dxvahd": [],
+                "eaptypes": [],
+                "enclaveapi": [],
+                "endpointvolume": [],
+                "errhandlingapi": [],
+                "everything": [],
+                "evntcons": [],
+                "evntprov": [],
+                "evntrace": [],
+                "excpt": [],
+                "exdisp": [],
+                "fibersapi": [],
+                "fileapi": [],
+                "functiondiscoverykeys_devpkey": [],
+                "gl-gl": [],
+                "guiddef": [],
+                "handleapi": [],
+                "heapapi": [],
+                "hidclass": [],
+                "hidpi": [],
+                "hidsdi": [],
+                "hidusage": [],
+                "highlevelmonitorconfigurationapi": [],
+                "hstring": [],
+                "http": [],
+                "ifdef": [],
+                "ifmib": [],
+                "imm": [],
+                "impl-debug": [],
+                "impl-default": [],
+                "in6addr": [],
+                "inaddr": [],
+                "inspectable": [],
+                "interlockedapi": [],
+                "intsafe": [],
+                "ioapiset": [],
+                "ipexport": [],
+                "iphlpapi": [],
+                "ipifcons": [],
+                "ipmib": [],
+                "iprtrmib": [],
+                "iptypes": [],
+                "jobapi": [],
+                "jobapi2": [],
+                "knownfolders": [],
+                "ks": [],
+                "ksmedia": [],
+                "ktmtypes": [],
+                "ktmw32": [],
+                "l2cmn": [],
+                "libloaderapi": [],
+                "limits": [],
+                "lmaccess": [],
+                "lmalert": [],
+                "lmapibuf": [],
+                "lmat": [],
+                "lmcons": [],
+                "lmdfs": [],
+                "lmerrlog": [],
+                "lmjoin": [],
+                "lmmsg": [],
+                "lmremutl": [],
+                "lmrepl": [],
+                "lmserver": [],
+                "lmshare": [],
+                "lmstats": [],
+                "lmsvc": [],
+                "lmuse": [],
+                "lmwksta": [],
+                "lowlevelmonitorconfigurationapi": [],
+                "lsalookup": [],
+                "memoryapi": [],
+                "minschannel": [],
+                "minwinbase": [],
+                "minwindef": [],
+                "mmdeviceapi": [],
+                "mmeapi": [],
+                "mmreg": [],
+                "mmsystem": [],
+                "mprapidef": [],
+                "msaatext": [],
+                "mscat": [],
+                "mschapp": [],
+                "mssip": [],
+                "mstcpip": [],
+                "mswsock": [],
+                "mswsockdef": [],
+                "namedpipeapi": [],
+                "namespaceapi": [],
+                "nb30": [],
+                "ncrypt": [],
+                "netioapi": [],
+                "nldef": [],
+                "ntddndis": [],
+                "ntddscsi": [],
+                "ntddser": [],
+                "ntdef": [],
+                "ntlsa": [],
+                "ntsecapi": [],
+                "ntstatus": [],
+                "oaidl": [],
+                "objbase": [],
+                "objidl": [],
+                "objidlbase": [],
+                "ocidl": [],
+                "ole2": [],
+                "oleauto": [],
+                "olectl": [],
+                "oleidl": [],
+                "opmapi": [],
+                "pdh": [],
+                "perflib": [],
+                "physicalmonitorenumerationapi": [],
+                "playsoundapi": [],
+                "portabledevice": [],
+                "portabledeviceapi": [],
+                "portabledevicetypes": [],
+                "powerbase": [],
+                "powersetting": [],
+                "powrprof": [],
+                "processenv": [],
+                "processsnapshot": [],
+                "processthreadsapi": [],
+                "processtopologyapi": [],
+                "profileapi": [],
+                "propidl": [],
+                "propkey": [],
+                "propkeydef": [],
+                "propsys": [],
+                "prsht": [],
+                "psapi": [],
+                "qos": [],
+                "realtimeapiset": [],
+                "reason": [],
+                "restartmanager": [],
+                "restrictederrorinfo": [],
+                "rmxfguid": [],
+                "roapi": [],
+                "robuffer": [],
+                "roerrorapi": [],
+                "rpc": [],
+                "rpcdce": [],
+                "rpcndr": [],
+                "rtinfo": [],
+                "sapi": [],
+                "sapi51": [],
+                "sapi53": [],
+                "sapiddk": [],
+                "sapiddk51": [],
+                "schannel": [],
+                "sddl": [],
+                "securityappcontainer": [],
+                "securitybaseapi": [],
+                "servprov": [],
+                "setupapi": [],
+                "shellapi": [],
+                "shellscalingapi": [],
+                "shlobj": [],
+                "shobjidl": [],
+                "shobjidl_core": [],
+                "shtypes": [],
+                "softpub": [],
+                "spapidef": [],
+                "spellcheck": [],
+                "sporder": [],
+                "sql": [],
+                "sqlext": [],
+                "sqltypes": [],
+                "sqlucode": [],
+                "sspi": [],
+                "std": [],
+                "stralign": [],
+                "stringapiset": [],
+                "strmif": [],
+                "subauth": [],
+                "synchapi": [],
+                "sysinfoapi": [],
+                "systemtopologyapi": [],
+                "taskschd": [],
+                "tcpestats": [],
+                "tcpmib": [],
+                "textstor": [],
+                "threadpoolapiset": [],
+                "threadpoollegacyapiset": [],
+                "timeapi": [],
+                "timezoneapi": [],
+                "tlhelp32": [],
+                "transportsettingcommon": [],
+                "tvout": [],
+                "udpmib": [],
+                "unknwnbase": [],
+                "urlhist": [],
+                "urlmon": [],
+                "usb": [],
+                "usbioctl": [],
+                "usbiodef": [],
+                "usbscan": [],
+                "usbspec": [],
+                "userenv": [],
+                "usp10": [],
+                "utilapiset": [],
+                "uxtheme": [],
+                "vadefs": [],
+                "vcruntime": [],
+                "vsbackup": [],
+                "vss": [],
+                "vsserror": [],
+                "vswriter": [],
+                "wbemads": [],
+                "wbemcli": [],
+                "wbemdisp": [],
+                "wbemprov": [],
+                "wbemtran": [],
+                "wct": [],
+                "werapi": [],
+                "winbase": [],
+                "wincodec": [],
+                "wincodecsdk": [],
+                "wincon": [],
+                "wincontypes": [],
+                "wincred": [],
+                "wincrypt": [],
+                "windef": [],
+                "windot11": [],
+                "windowsceip": [],
+                "windowsx": [],
+                "winefs": [],
+                "winerror": [],
+                "winevt": [],
+                "wingdi": [],
+                "winhttp": [],
+                "wininet": [],
+                "winineti": [],
+                "winioctl": [],
+                "winnetwk": [],
+                "winnls": [],
+                "winnt": [],
+                "winreg": [],
+                "winsafer": [],
+                "winscard": [],
+                "winsmcrd": [],
+                "winsock2": [],
+                "winspool": [],
+                "winstring": [],
+                "winsvc": [],
+                "wintrust": [],
+                "winusb": [],
+                "winusbio": [],
+                "winuser": [],
+                "winver": [],
+                "wlanapi": [],
+                "wlanihv": [],
+                "wlanihvtypes": [],
+                "wlantypes": [],
+                "wlclient": [],
+                "wmistr": [],
+                "wnnc": [],
+                "wow64apiset": [],
+                "wpdmtpextensions": [],
+                "ws2bth": [],
+                "ws2def": [],
+                "ws2ipdef": [],
+                "ws2spi": [],
+                "ws2tcpip": [],
+                "wtsapi32": [],
+                "wtypes": [],
+                "wtypesbase": [],
+                "xinput": []
+            },
+            "homepage": null,
+            "id": "winapi 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "windows",
+                "ffi",
+                "win32",
+                "com",
+                "directx"
+            ],
+            "license": "MIT/Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-0.3.9/Cargo.toml",
+            "metadata": {
+                "docs": {
+                    "rs": {
+                        "default-target": "x86_64-pc-windows-msvc",
+                        "features": [
+                            "everything",
+                            "impl-debug",
+                            "impl-default"
+                        ],
+                        "targets": [
+                            "aarch64-pc-windows-msvc",
+                            "i686-pc-windows-msvc",
+                            "x86_64-pc-windows-msvc"
+                        ]
+                    }
+                }
+            },
+            "name": "winapi",
+            "publish": null,
+            "readme": "README.md",
+            "repository": "https://github.com/retep998/winapi-rs",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "winapi",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-0.3.9/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-0.3.9/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "0.3.9"
+        },
+        {
+            "authors": [
+                "Peter Atashian <retep998@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [],
+            "description": "Import libraries for the i686-pc-windows-gnu target. Please don't use this crate directly, depend on winapi instead.",
+            "documentation": null,
+            "edition": "2015",
+            "features": {},
+            "homepage": null,
+            "id": "winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "windows"
+            ],
+            "license": "MIT/Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-i686-pc-windows-gnu-0.4.0/Cargo.toml",
+            "metadata": null,
+            "name": "winapi-i686-pc-windows-gnu",
+            "publish": null,
+            "readme": null,
+            "repository": "https://github.com/retep998/winapi-rs",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "winapi-i686-pc-windows-gnu",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-i686-pc-windows-gnu-0.4.0/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-i686-pc-windows-gnu-0.4.0/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "0.4.0"
+        },
+        {
+            "authors": [
+                "Peter Atashian <retep998@gmail.com>"
+            ],
+            "categories": [],
+            "dependencies": [],
+            "description": "Import libraries for the x86_64-pc-windows-gnu target. Please don't use this crate directly, depend on winapi instead.",
+            "documentation": null,
+            "edition": "2015",
+            "features": {},
+            "homepage": null,
+            "id": "winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+            "keywords": [
+                "windows"
+            ],
+            "license": "MIT/Apache-2.0",
+            "license_file": null,
+            "links": null,
+            "manifest_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-x86_64-pc-windows-gnu-0.4.0/Cargo.toml",
+            "metadata": null,
+            "name": "winapi-x86_64-pc-windows-gnu",
+            "publish": null,
+            "readme": null,
+            "repository": "https://github.com/retep998/winapi-rs",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "targets": [
+                {
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "doc": true,
+                    "doctest": true,
+                    "edition": "2015",
+                    "kind": [
+                        "lib"
+                    ],
+                    "name": "winapi-x86_64-pc-windows-gnu",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-x86_64-pc-windows-gnu-0.4.0/src/lib.rs",
+                    "test": true
+                },
+                {
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "doc": false,
+                    "doctest": false,
+                    "edition": "2015",
+                    "kind": [
+                        "custom-build"
+                    ],
+                    "name": "build-script-build",
+                    "src_path": "/Users/toy/.cargo/registry/src/github.com-1ecc6299db9ec823/winapi-x86_64-pc-windows-gnu-0.4.0/build.rs",
+                    "test": false
+                }
+            ],
+            "version": "0.4.0"
+        }
+    ],
+    "resolve": {
+        "nodes": [
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [
+                    "hot_crate 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate)",
+                    "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)",
+                    "plugins 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugins)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "hot_crate",
+                        "pkg": "hot_crate 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "plugin_api",
+                        "pkg": "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "plugins",
+                        "pkg": "plugins 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugins)"
+                    }
+                ],
+                "features": [],
+                "id": "demo 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo)"
+            },
+            {
+                "dependencies": [
+                    "libloading 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "serde_json 1.0.61 (registry+https://github.com/rust-lang/crates.io-index)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "libloading",
+                        "pkg": "libloading 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "serde_json",
+                        "pkg": "serde_json 1.0.61 (registry+https://github.com/rust-lang/crates.io-index)"
+                    }
+                ],
+                "features": [],
+                "id": "hot_crate 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "itoa 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [
+                    "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "winapi 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": "cfg(unix)"
+                            }
+                        ],
+                        "name": "cfg_if",
+                        "pkg": "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": "cfg(windows)"
+                            }
+                        ],
+                        "name": "winapi",
+                        "pkg": "winapi 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)"
+                    }
+                ],
+                "features": [],
+                "id": "libloading 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)"
+            },
+            {
+                "dependencies": [
+                    "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "plugin_api",
+                        "pkg": "plugin_api 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugin_api)"
+                    }
+                ],
+                "features": [],
+                "id": "plugins 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo/plugins)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "ryu 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [
+                    "std"
+                ],
+                "id": "serde 1.0.120 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [
+                    "itoa 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "ryu 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "serde 1.0.120 (registry+https://github.com/rust-lang/crates.io-index)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "itoa",
+                        "pkg": "itoa 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "ryu",
+                        "pkg": "ryu 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": null
+                            }
+                        ],
+                        "name": "serde",
+                        "pkg": "serde 1.0.120 (registry+https://github.com/rust-lang/crates.io-index)"
+                    }
+                ],
+                "features": [
+                    "default",
+                    "std"
+                ],
+                "id": "serde_json 1.0.61 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [
+                    "winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)"
+                ],
+                "deps": [
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": "i686-pc-windows-gnu"
+                            }
+                        ],
+                        "name": "winapi_i686_pc_windows_gnu",
+                        "pkg": "winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)"
+                    },
+                    {
+                        "dep_kinds": [
+                            {
+                                "kind": null,
+                                "target": "x86_64-pc-windows-gnu"
+                            }
+                        ],
+                        "name": "winapi_x86_64_pc_windows_gnu",
+                        "pkg": "winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)"
+                    }
+                ],
+                "features": [
+                    "errhandlingapi",
+                    "libloaderapi",
+                    "winerror"
+                ],
+                "id": "winapi 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)"
+            },
+            {
+                "dependencies": [],
+                "deps": [],
+                "features": [],
+                "id": "winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)"
+            }
+        ],
+        "root": "demo 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo)"
+    },
+    "target_directory": "/Users/toy/repos/rs/reload/hot_crate/demo/target",
+    "version": 1,
+    "workspace_members": [
+        "demo 0.1.0 (path+file:///Users/toy/repos/rs/reload/hot_crate/demo)"
+    ],
+    "workspace_root": "/Users/toy/repos/rs/reload/hot_crate/demo"
+}
