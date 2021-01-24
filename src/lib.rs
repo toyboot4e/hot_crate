@@ -27,20 +27,22 @@ use std::{
 };
 
 /// TODO: create error type
-pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 pub type Error = Box<dyn std::error::Error>;
+
+/// TODO: create error type
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 /// macOS: `dylib`, Linux: `so`, Windows: `dll`
 #[cfg(target_os = "macos")]
-pub const DYLIB_EXTENSION: &'static str = "dylib";
+const DYLIB_EXTENSION: &'static str = "dylib";
 
 /// macOS: `dylib`, Linux: `so`, Windows: `dll`
 #[cfg(target_os = "linux")]
-pub const DYLIB_EXTENSION: &'static str = "so";
+const DYLIB_EXTENSION: &'static str = "so";
 
 /// macOS: `dylib`, Linux: `so`, Windows: `dll`
 #[cfg(target_os = "window")]
-pub const DYLIB_EXTENSION: &'static str = "dll";
+const DYLIB_EXTENSION: &'static str = "dll";
 
 /// A reloadable dynamic [`Library`]
 #[derive(Debug)]
@@ -58,9 +60,14 @@ pub struct HotLibrary {
     reload_counter: usize,
 }
 
+unsafe impl Send for HotLibrary {}
+unsafe impl Sync for HotLibrary {}
+
 impl HotLibrary {
-    /// Loads a crate. NOTE: It loads **outdated version** of [`Library`] if you re-compiled your
-    /// library.
+    /// Loads a `dylib` crate. NOTE: It loads an **outdated version** of [`Library`] if you have
+    /// re-compiled your library before calling it.
+    ///
+    /// See [`Library::new`] for thread safety.
     pub fn load(main_toml: impl AsRef<Path>, dylib_toml: impl AsRef<Path>) -> Result<Self> {
         let main_toml = main_toml.as_ref();
         let dylib_toml = dylib_toml.as_ref();
@@ -80,6 +87,11 @@ impl HotLibrary {
         })
     }
 
+    /// See [`libloading::Library::close`]
+    pub fn unload(self) -> std::result::Result<(), libloading::Error> {
+        self.lib.close()
+    }
+
     pub unsafe fn get<'lib, T>(
         &'lib self,
         symbol: &[u8],
@@ -91,7 +103,7 @@ impl HotLibrary {
         let pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
         let target = self::find_dylib_target(&self.main_metadata, &self.dylib_toml)?;
 
-        // ${TMP_DIR}/hot_crate/${plugin}/lib${plugin}-${counter}.${ext}
+        // ${TMP_DIR}/hot_crate/lib${plugin}-${counter}.${ext}
         let tmp = std::env::temp_dir();
         let tmp = tmp.join("hot_crate").join(format!("{}", pkg.name));
         let tmp = tmp.join(format!(
@@ -104,7 +116,7 @@ impl HotLibrary {
         Ok(tmp)
     }
 
-    /// Reloads dylib if it's outdated. Returns true if succeed in reloading.
+    /// Reloads the dylib if it's outdated. Returns true if succeed in reloading.
     pub fn reload(&mut self) -> Result<bool> {
         let timestamp = fs::metadata(&self.lib_path)?.modified().ok();
         if timestamp == self.lib_timestamp {
@@ -115,6 +127,7 @@ impl HotLibrary {
         }
     }
 
+    /// Reloads the dylib anyways
     pub fn force_reload(&mut self) -> Result<()> {
         {
             let dylib_pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
@@ -134,13 +147,9 @@ impl HotLibrary {
                 .current_dir(&tmp_dir)
                 .arg("-id")
                 .arg("''")
-                .arg(
-                    tmp_dylib_path
-                        .file_name()
-                        .expect("temp dylib path has no file name"),
-                )
+                .arg(tmp_dylib_path.file_name().unwrap())
                 .output()
-                .expect("ls command failed to start");
+                .expect("`install_name_tool` failed to start");
         }
 
         self.lib = Library::new(&tmp_dylib_path)?;
@@ -157,13 +166,7 @@ fn find_dylib_pkg<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Result<
     let dylib_pkg = main_metadata
         .packages
         .iter()
-        .find_map(|pkg| {
-            if pkg.manifest_path == dylib_toml {
-                Some(pkg)
-            } else {
-                None
-            }
-        })
+        .find(|pkg| pkg.manifest_path == dylib_toml)
         .ok_or_else(|| format!("Unable to find dylib package"))?;
 
     Ok(dylib_pkg)
@@ -175,6 +178,7 @@ fn find_dylib_target<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Resu
     let target = dylib_pkg
         .targets
         .iter()
+        // TODO: allow `cdylib`?
         .find(|target| target.crate_types.iter().any(|t| t == "dylib"))
         .ok_or_else(|| {
             format!(
