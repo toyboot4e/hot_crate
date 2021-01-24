@@ -10,6 +10,7 @@ impl Plugin for PluginB {}
 
 #[no_mangle]
 pub extern "C" fn load() -> Box<dyn Plugin> {
+    // change "current plugin"
     Box::new(PluginA {})
     // Box::new(PluginB {})
 }
