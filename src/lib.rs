@@ -48,7 +48,7 @@ pub struct HotLibrary {
     main_metadata: Metadata,
     dylib_toml: PathBuf,
     /// API to load symbols from the target `dylib` crate
-    pub lib: Library,
+    lib: Library,
     lib_path: PathBuf,
     /// See [`fs::Metadata::modified`][f]
     ///
@@ -59,9 +59,8 @@ pub struct HotLibrary {
 }
 
 impl HotLibrary {
-    /// Loads crate
-    ///
-    /// TODO: consider hot loading
+    /// Loads a crate. NOTE: It loads **outdated version** of [`Library`] if you re-compiled your
+    /// library.
     pub fn load(main_toml: impl AsRef<Path>, dylib_toml: impl AsRef<Path>) -> Result<Self> {
         let main_toml = main_toml.as_ref();
         let dylib_toml = dylib_toml.as_ref();
@@ -81,6 +80,13 @@ impl HotLibrary {
         })
     }
 
+    pub unsafe fn get<'lib, T>(
+        &'lib self,
+        symbol: &[u8],
+    ) -> std::result::Result<libloading::Symbol<'lib, T>, libloading::Error> {
+        self.lib.get(symbol)
+    }
+
     fn tmp_dylib_path(&mut self) -> Result<PathBuf> {
         let pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
         let target = self::find_dylib_target(&self.main_metadata, &self.dylib_toml)?;
@@ -98,7 +104,7 @@ impl HotLibrary {
         Ok(tmp)
     }
 
-    /// Reloads dylib if it's re-compiled and updated. Returns true if succeed in reloading.
+    /// Reloads dylib if it's outdated. Returns true if succeed in reloading.
     pub fn reload(&mut self) -> Result<bool> {
         let timestamp = fs::metadata(&self.lib_path)?.modified().ok();
         if timestamp == self.lib_timestamp {
@@ -109,7 +115,7 @@ impl HotLibrary {
         }
     }
 
-    fn force_reload(&mut self) -> Result<()> {
+    pub fn force_reload(&mut self) -> Result<()> {
         {
             let dylib_pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
             log::info!("reloading library `{}`..", dylib_pkg.name);
