@@ -1,13 +1,12 @@
 /*!
 Reload `dylib` crates at runtime
 
-[`libloading`] has some [issue] for reloading dynamic libraries on macOS. [`HotLibrary`]
-automatically handles it under the hood.
-
-[issue]: https://github.com/nagisa/rust_libloading/issues/59
+[`libloading`] has some [issue] for reloading dynamic libraries on macOS. [`HotCrate`] automatically
+handles it under the hood.
 
 Credit: `hot_crate` is basically a fork of [`hotlib`].
 
+[issue]: https://github.com/nagisa/rust_libloading/issues/59
 [`hotlib`]: https://github.com/mitchmindtree/hotlib
 */
 
@@ -64,10 +63,9 @@ unsafe impl Send for HotCrate {}
 unsafe impl Sync for HotCrate {}
 
 impl HotCrate {
-    /// Loads a `dylib` crate. NOTE: It loads an **outdated version** of [`Library`] if you have
-    /// re-compiled your library before calling it.
+    /// Loads a `dylib` crate
     ///
-    /// See [`Library::new`] for thread safety. NOTE: it's better to provide with absolute paths.
+    /// See [`Library::new`] for thread safety. Arguments are in absolute paths.
     pub fn load(main_toml: impl AsRef<Path>, dylib_toml: impl AsRef<Path>) -> Result<Self> {
         let main_toml = main_toml.as_ref();
         let dylib_toml = dylib_toml.as_ref();
