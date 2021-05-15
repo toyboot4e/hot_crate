@@ -1,5 +1,4 @@
 /*!
-
 Reload `dylib` crates at runtime
 
 [`libloading`] has some [issue] for reloading dynamic libraries on macOS. [`HotLibrary`]
@@ -10,11 +9,12 @@ automatically handles it under the hood.
 Credit: `hot_crate` is basically a fork of [`hotlib`].
 
 [`hotlib`]: https://github.com/mitchmindtree/hotlib
-
 */
 
 pub extern crate cargo_metadata;
 pub extern crate libloading;
+
+pub use libloading::Symbol;
 
 use cargo_metadata::{Metadata, MetadataCommand, Package, Target};
 
@@ -46,7 +46,7 @@ const DYLIB_EXTENSION: &'static str = "dll";
 
 /// A reloadable dynamic [`Library`]
 #[derive(Debug)]
-pub struct HotLibrary {
+pub struct HotCrate {
     main_metadata: Metadata,
     dylib_toml: PathBuf,
     /// API to load symbols from the target `dylib` crate
@@ -60,14 +60,14 @@ pub struct HotLibrary {
     reload_counter: usize,
 }
 
-unsafe impl Send for HotLibrary {}
-unsafe impl Sync for HotLibrary {}
+unsafe impl Send for HotCrate {}
+unsafe impl Sync for HotCrate {}
 
-impl HotLibrary {
+impl HotCrate {
     /// Loads a `dylib` crate. NOTE: It loads an **outdated version** of [`Library`] if you have
     /// re-compiled your library before calling it.
     ///
-    /// See [`Library::new`] for thread safety.
+    /// See [`Library::new`] for thread safety. NOTE: it's better to provide with absolute paths.
     pub fn load(main_toml: impl AsRef<Path>, dylib_toml: impl AsRef<Path>) -> Result<Self> {
         let main_toml = main_toml.as_ref();
         let dylib_toml = dylib_toml.as_ref();
@@ -117,8 +117,9 @@ impl HotLibrary {
     }
 
     /// Reloads the dylib if it's outdated. Returns true if succeed in reloading.
-    pub fn reload(&mut self) -> Result<bool> {
+    pub fn try_reload(&mut self) -> Result<bool> {
         let timestamp = fs::metadata(&self.lib_path)?.modified().ok();
+
         if timestamp == self.lib_timestamp {
             Ok(false)
         } else {
