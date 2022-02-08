@@ -13,17 +13,13 @@ Credit: `hot_crate` is basically a fork of [`hotlib`].
 pub extern crate cargo_metadata;
 pub extern crate libloading;
 
+pub use camino::{self, Utf8Path, Utf8PathBuf};
 pub use libloading::Symbol;
 
 use cargo_metadata::{Metadata, MetadataCommand, Package, Target};
-
 use libloading::Library;
 
-use std::{
-    fs,
-    path::{Path, PathBuf},
-    time::SystemTime,
-};
+use std::{fs, time::SystemTime};
 
 /// TODO: create error type
 pub type Error = Box<dyn std::error::Error>;
@@ -47,10 +43,10 @@ const DYLIB_EXTENSION: &'static str = "dll";
 #[derive(Debug)]
 pub struct HotCrate {
     main_metadata: Metadata,
-    dylib_toml: PathBuf,
+    dylib_toml: Utf8PathBuf,
     /// API to load symbols from the target `dylib` crate
     lib: Library,
-    lib_path: PathBuf,
+    lib_path: Utf8PathBuf,
     /// See [`fs::Metadata::modified`][f]
     ///
     /// [f]: https://doc.rust-lang.org/std/fs/struct.Metadata.html#method.modified
@@ -66,13 +62,13 @@ impl HotCrate {
     /// Loads a `dylib` crate
     ///
     /// See [`Library::new`] for thread safety. Arguments are in absolute paths.
-    pub fn load(main_toml: impl AsRef<Path>, dylib_toml: impl AsRef<Path>) -> Result<Self> {
+    pub fn load(main_toml: impl AsRef<Utf8Path>, dylib_toml: impl AsRef<Utf8Path>) -> Result<Self> {
         let main_toml = main_toml.as_ref();
         let dylib_toml = dylib_toml.as_ref();
 
         let main_metadata = MetadataCommand::new().manifest_path(main_toml).exec()?;
         let lib_path = self::find_dylib_path(&main_metadata, dylib_toml)?;
-        let lib = Library::new(&lib_path)?;
+        let lib = unsafe { Library::new(&lib_path)? };
         let lib_timestamp = fs::metadata(&lib_path)?.modified().ok();
 
         Ok(Self {
@@ -97,12 +93,13 @@ impl HotCrate {
         self.lib.get(symbol)
     }
 
-    fn tmp_dylib_path(&mut self) -> Result<PathBuf> {
+    fn tmp_dylib_path(&mut self) -> Result<Utf8PathBuf> {
         let pkg = self::find_dylib_pkg(&self.main_metadata, &self.dylib_toml)?;
         let target = self::find_dylib_target(&self.main_metadata, &self.dylib_toml)?;
 
         // ${TMP_DIR}/hot_crate/lib${plugin}-${counter}.${ext}
-        let tmp = std::env::temp_dir();
+        let tmp = Utf8PathBuf::from_path_buf(std::env::temp_dir())
+            .map_err(|p| format!("unable to create UTF8 path from {}", p.display()))?;
         let tmp = tmp.join("hot_crate").join(format!("{}", pkg.name));
         let tmp = tmp.join(format!(
             "lib{}-{}.{}",
@@ -112,6 +109,10 @@ impl HotCrate {
         self.reload_counter += 1;
 
         Ok(tmp)
+    }
+
+    pub fn lib(&self) -> &Library {
+        &self.lib
     }
 
     /// Reloads the dylib if it's outdated. Returns true if succeed in reloading.
@@ -151,7 +152,7 @@ impl HotCrate {
                 .expect("`install_name_tool` failed to start");
         }
 
-        self.lib = Library::new(&tmp_dylib_path)?;
+        self.lib = unsafe { Library::new(&tmp_dylib_path)? };
         self.lib_path = dylib_path;
         self.lib_timestamp = fs::metadata(&self.lib_path)?.modified().ok();
 
@@ -159,7 +160,7 @@ impl HotCrate {
     }
 }
 
-fn find_dylib_pkg<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Result<&'a Package> {
+fn find_dylib_pkg<'a>(main_metadata: &'a Metadata, dylib_toml: &Utf8Path) -> Result<&'a Package> {
     let dylib_toml = dylib_toml.canonicalize()?;
 
     let dylib_pkg = main_metadata
@@ -171,7 +172,7 @@ fn find_dylib_pkg<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Result<
     Ok(dylib_pkg)
 }
 
-fn find_dylib_target<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Result<&'a Target> {
+fn find_dylib_target<'a>(main_metadata: &'a Metadata, dylib_toml: &Utf8Path) -> Result<&'a Target> {
     let dylib_pkg = self::find_dylib_pkg(main_metadata, dylib_toml)?;
 
     let target = dylib_pkg
@@ -179,17 +180,12 @@ fn find_dylib_target<'a>(main_metadata: &'a Metadata, dylib_toml: &Path) -> Resu
         .iter()
         // TODO: allow `cdylib`?
         .find(|target| target.crate_types.iter().any(|t| t == "dylib"))
-        .ok_or_else(|| {
-            format!(
-                "Unable to find `dylib` target from {}",
-                dylib_toml.display()
-            )
-        })?;
+        .ok_or_else(|| format!("Unable to find `dylib` target from {}", dylib_toml))?;
 
     Ok(target)
 }
 
-fn find_dylib_path(main_metadata: &Metadata, dylib_toml: &Path) -> Result<PathBuf> {
+fn find_dylib_path(main_metadata: &Metadata, dylib_toml: &Utf8Path) -> Result<Utf8PathBuf> {
     let target = self::find_dylib_target(main_metadata, dylib_toml)?;
 
     let debug_or_release = if cfg!(debug_assertions) {
