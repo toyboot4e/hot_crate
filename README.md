@@ -6,3 +6,4 @@ _Reload `dylib` crates at runtime_
 
 Credit: `hot_crate` is basically a fork of [`hotlib`](https://github.com/mitchmindtree/hotlib).
 
+WARNING: It's tested on macOS only.
