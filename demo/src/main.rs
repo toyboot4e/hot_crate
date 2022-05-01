@@ -1,15 +1,13 @@
-/*!
-
-NOTE: This example migh work if you use `libloading` directory, too, but it's proablly not the case
-in real applications.
-
-*/
+//! NOTE: This example migh work if you use `libloading` directory, too, but it's proablly not the
+//! case in real applications.
 
 use std::{thread::sleep, time::Duration};
 
-use hot_crate::{libloading::Symbol, HotCrate, Utf8PathBuf};
+use hot_crate::{HotCrate, Utf8PathBuf};
 
 use plugin_api::Plugin;
+
+pub type LoadFn<'a> = hot_crate::libloading::Symbol<'a, extern "C" fn() -> Box<Box<dyn Plugin>>>;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     env_logger::init();
@@ -30,8 +28,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn print_current_plugin(plugin: &mut HotCrate) {
-    let load: Symbol<extern "C" fn() -> Box<dyn Plugin>> =
-        unsafe { plugin.lib().get(b"load_plugin") }.unwrap();
+    let load: LoadFn = unsafe { plugin.lib().get(b"load_plugin") }.unwrap();
     let plugin = load();
 
     println!(

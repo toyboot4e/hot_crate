@@ -14,12 +14,9 @@ pub struct PluginB {}
 
 impl Plugin for PluginB {}
 
-/// FIXME: Not FFI-safe?
 #[no_mangle]
-pub extern "C" fn load_plugin() -> Box<dyn Plugin> {
-    // change "current plugin"
-    Box::new(PluginA {
+pub extern "C" fn load_plugin() -> Box<Box<dyn Plugin>> {
+    Box::new(Box::new(PluginA {
         _typeid_of_x: TypeId::of::<plugin_api::X>(),
-    })
-    // Box::new(PluginB {})
+    }))
 }
