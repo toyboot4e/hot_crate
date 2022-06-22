@@ -13,7 +13,7 @@ Credit: `hot_crate` is basically a fork of [`hotlib`].
 pub extern crate cargo_metadata;
 pub extern crate libloading;
 
-pub use camino::{self, Utf8Path, Utf8PathBuf};
+pub use cargo_metadata::camino::{self, Utf8Path, Utf8PathBuf};
 pub use libloading::Symbol;
 
 use cargo_metadata::{Metadata, MetadataCommand, Package, Target};
